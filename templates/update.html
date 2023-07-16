@@ -1,0 +1,92 @@
+{% extends "navbar.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Update Page</title>
+    <link rel="stylesheet" href= "static/css/bootstrap.min.css">
+    <link  rel="stylesheet" href="{% static 'css/styles2.css' %}">
+
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    background-color: rgb(242, 227, 246);
+}
+.update{
+    position: absolute;
+    width: calc(100% -68px);
+    left: 80px;
+    transition:all 0.5s ease;
+    margin-top: 100px;
+    font-family: "Poppins" , sans-serif;
+
+}
+
+
+.sidebar.active ~ .update{
+    width: calc(100% -240px);
+    left:240px;
+    
+}
+
+.card-body1{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: rgb(0, 3, 3);
+          font-size: xx-large;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(149, 209, 239);
+          font-family: "Poppins" , sans-serif;
+        
+        }
+
+
+.card1 {
+  position: center;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width:max-content;
+  word-wrap: break-word;
+ width:700px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-left: 180px;
+  height:100px
+}
+
+
+</style>
+<body>
+  
+<div class="update">
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4 card1" >
+            <div class="card-body1">To Update The Results Click the Button</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+            </div>
+        </div>
+    </div>
+
+<form action="update" method="POST" id="systemform">
+    {% csrf_token %}
+        <div class="input-group-append">
+            <button class="btn btn-dark btn-lg" id ="btn" style="margin-left:450px;">Update</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>
+
+    

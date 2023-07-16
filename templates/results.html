@@ -1,0 +1,1138 @@
+{% extends "navbar.html" %}
+{% block content %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Page</title>
+    <link  rel="stylesheet" href="{% static 'css/styles2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function WriteCookie(){
+         if(document.form1.roll.value==""){
+             alert('Enter Roll No');
+             return;
+         }
+         rollno=document.form1.roll.value.toUpperCase();
+         document.cookie="roll="+rollno;
+        }
+     </script>
+  <style>
+ body {
+    position: relative;
+    min-height: 100vh;
+    width: calc(100% -68px);
+    background-repeat: repeat;
+    background-color: #eaf1f5;
+
+}
+
+.Results{
+    position: absolute;
+    height: 100%;
+    width: calc(100% -68px);
+    left: 68px;
+    transition:all 0.5s ease;
+    z-index:1;
+    margin-top: 40px;
+}
+
+.size{
+    margin-top:20px;
+    padding:5px 20px;
+    font-size: 20px;
+    box-sizing: 20px;
+    z-index: 1;
+
+}
+.sidebar.active ~ .Results{
+    width: calc(100% -240px);
+    left:240px;
+}
+.background{
+
+    
+     background-size:100%;
+     background-size: cover;
+}
+.row1{
+    display:flex;
+    margin-left: -4px ;
+    margin-right: -4px;
+}
+.column
+{
+    flex:100%;
+    padding:3px;
+}
+table
+{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 50px;;
+  border-color:1px solid rgb(19, 18, 18);
+
+}
+
+th,td{
+    text-align:left;
+    padding:16px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.thide
+{   
+    border:none;
+    font-size:medium;
+    text-decoration-color: rgb(4, 89, 89);
+    align-self: baseline;
+
+}
+
+
+input{
+    margin-top:20px;
+    padding:5px 20px;
+    font-size: 20px;
+}
+
+button{
+    margin-top:10px;
+    padding:5px 10px;
+    font-size: 20px;
+    margin-right: 50px;
+
+}
+.btn2 {
+    margin-left: 50px;
+}
+
+.card-body1{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: azure;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(81, 18, 63);
+        }
+
+
+.card-body2{
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+  position: center;
+  text-align: center;
+  color: azure;
+  text-shadow: 0 1px 2px rgb(255, 247, 247);
+  background-color: rgb(17, 199, 227);
+}
+
+.card-body3{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: azure;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(14, 87, 5);
+        }
+
+
+.card1 {
+  position: center;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width:max-content;
+  word-wrap: break-word;
+ 
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-left: 380px;
+}
+
+.card2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width:400px;
+  size: 40px;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-left:380px;
+}
+
+
+
+.card3 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width:250px;
+  size: 20px;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-left:380px;
+}
+
+.card-body4{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: azure;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(54, 96, 249);
+        }
+.card-body5{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: azure;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(244, 180, 16);
+        }
+
+.card-body6{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: azure;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(56, 183, 39);
+        }
+
+.card-body7{
+          flex: 1 1 auto;
+          padding: 1rem 1rem;
+          position: center;
+          text-align: center;
+          color: azure;
+          text-shadow: 0 1px 2px rgb(255, 247, 247);
+          background-color: rgb(216, 31, 31);
+        }
+
+.text-align
+{
+  text-align: left;
+  margin-left: 100px;
+}
+
+.table-info
+{
+  background-color:rgb(39, 60, 246);
+  
+}
+
+.target_box
+{
+  margin:2% 2%;
+  background: transparent;
+}
+
+</style>
+
+</head>
+<body >
+  {% if user.is_authenticated %}
+
+  
+
+    <div class="Results">
+     <!--Search section-->
+    <section id="Search">
+    <div class="container my-4 size center" >
+
+        <div class="row" style="margin-top:60px">
+            <form name="form1" action="results" method="POST" id="systemform">
+                    {% csrf_token %}
+                    <div class="input-group" style="margin-top:20px;
+                    margin-left: 300px;
+                    font-size: 20px;
+                    width:600px;" >
+                        <input  id="roll" name="roll" placeholder="Roll Number" type="search"
+                        class="form-control me-2" style="margin-top: 10px ;color:#dddddd; border-color: black;" aria-label="Search"/>
+                        <button class="btn btn-dark btn-lg" type="submit" id ="btn">Submit </button>
+                      </form>
+                        <button type="button" class="btn btn-info btn2" onclick="window.print()" style="margin-top:10px;
+                        padding:5px 10px;
+                        font-size: 20px;
+                        width:100px;">print</button>
+                    </div>
+               
+             
+
+          
+    <!-- <button onclick="myfun()">Print Page</button> -->
+    </div>  
+</section>
+
+
+<!-- SEM MARKS SECTION-->
+<section  id = "Sem_results">
+  <div class="container my-4">
+    
+{% for stu in student %}
+{% for col in stu %}
+    <div>
+      <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card1">
+                <div class="card-body1">Name : {{col.Name}}</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                  <div class="card-body2">Roll Number : {{col.roll_no}}</div>
+               
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <div class="row1">
+        {% for key,value in data1.items %}
+         
+        <div class="column">
+            <div>
+            <h5 class ="text-align">Sem Number : {{key}}</h5 >
+        </div>
+
+             <table class="table table-striped table-bordered table-sm" style="width:70%">
+                <thead class="table-info">
+                    <tr>
+                        
+                        <th>Subject name</th>
+                        <th>Grade </th>
+                        <th>credit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for j in value %}
+                    <tr class="table-light ">
+                        
+                         <td>{{j.Subname}}</td>
+                         <td>{{j.Grade}}</td>
+                         <td>{{j.Credits}}</td>
+                         
+                    </tr>
+                    
+                    {% endfor %}
+
+            </tbody>
+            </table>
+       
+           </div>
+             
+              {% endfor %}
+                  
+            </div>
+    
+     <div class="row1">
+        {% for key,value in data2.items %}
+                 
+                <div class="column">
+                    <div>
+                    <h5 class ="text-align">Sem Number : {{key}}</h5>
+                </div>
+        
+                     <table class="table table-striped table-bordered table-sm" style="width:70%">
+                        <thead class="table-info">
+                            <tr >
+                                
+                                <th>Subject name</th>
+                                <th>Grade </th>
+                                <th>credit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for j in value %}
+                            <tr class="table-light ">
+                                
+                                 <td>{{j.Subname}}</td>
+                                 <td>{{j.Grade}}</td>
+                                 <td>{{j.Credits}}</td>
+                                 
+                            </tr>
+                            
+                            {% endfor %}
+        
+                    </tbody>
+                    </table>
+               
+                   </div>
+                     
+                      {% endfor %}
+                          
+                    </div>
+
+     <div class="row1">
+        {% for key,value in data3.items %}
+         
+        <div class="column">
+            <div>
+                <h5 class ="text-align">Sem Number : {{key}}</h5>
+        </div>
+
+             <table class="table table-striped table-bordered table-sm" style="width:70%">
+                <thead class="table-info">
+                    <tr >
+                        
+                        <th>Subject name</th>
+                        <th>Grade </th>
+                        <th>credit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for j in value %}
+                    <tr class="table-light ">
+                        
+                         <td>{{j.Subname}}</td>
+                         <td>{{j.Grade}}</td>
+                         <td>{{j.Credits}}</td>
+                         
+                    </tr>
+                    
+                    {% endfor %}
+
+            </tbody>
+            </table>
+       
+           </div>
+             
+              {% endfor %}
+                  
+            </div>
+
+
+     <div class="row1">
+            {% for key,value in data4.items %}
+                 
+                <div class="column">
+                    <div>
+                        <h5 class ="text-align">Sem Number : {{key}}</h5>
+                </div>
+        
+                     <table class="table table-striped table-bordered table-sm" style="width:70%">
+                        <thead class="table-info">
+                            <tr>
+                                
+                                <th>Subject name</th>
+                                <th>Grade </th>
+                                <th>credit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for j in value %}
+                            <tr class="table-light ">
+                                
+                                 <td>{{j.Subname}}</td>
+                                 <td>{{j.Grade}}</td>
+                                 <td>{{j.Credits}}</td>
+                                 
+                            </tr>
+                            
+                            {% endfor %}
+        
+                    </tbody>
+                    </table>
+               
+                   </div>
+                     
+                      {% endfor %}
+                          
+                    </div>
+                    <div>
+              <table class="table table-striped table-bordered table-sm" style="width:50% ; margin-left: 300px;">
+                <thead class="table-info">
+                    <tr>
+                        
+                        <th>Semister Number</th>
+                        <th>SGPA </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in SGPA.items %}
+                    <tr class="table-light tr:nth-child" >
+                        
+                         <td>{{key}}</td>
+                         <td>{{value}}</td>
+
+                         
+                    </tr>
+                    
+                    {% endfor %}
+  
+              </tbody>
+              </table>
+            </div>
+
+            <div>
+              <table class="table table-striped table-bordered table-sm" style="width:50% ; margin-left: 300px;">
+                <thead class="table-info">
+                    <tr>
+                        
+                        <th>Semister Number</th>
+                        <th>Backlog Subject </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in backlogs.items  %}
+                    {% for i in value %}
+                    <tr class="table-light tr:nth-child" >
+                        
+                         <td>{{key}}</td>
+                         <td>{{i.Subname}}</td>
+
+                    </tr>
+                    {% endfor %}
+                    
+                    {% endfor %}
+  
+              </tbody>
+              </table>
+            </div>
+           <br>
+            <div class="row">
+              <div class="col-xl-3 col-md-6">
+                  <div class="card2">
+                      <div class="card-body3">CGPA : {{col.CGPA}}</div>
+                
+                     
+                      </div>
+                  </div>
+              </div>
+
+    {% endfor %}
+    {% endfor %}
+ 
+</div>
+
+</section>
+
+<!-- MID MARKS SECTION-->
+<section id="mid_results">
+  <style>
+   .row1 tr:nth-child(even) {
+  background-color: #dddddd;
+}
+  </style>
+
+<div class="container my-4">
+    {% for stu in student %}
+    {% for col in stu %}
+    <div class="row">
+      <div class="col-xl-3 col-md-6">
+          <div class="card2">
+              <div class="card-body1">Mid Results</div>
+              </div>
+          </div>
+         </div>
+            {% endfor %}
+            {% endfor %}
+            <div class="row1">
+                {% for key,value in mid1.items %}
+                 
+                <div class="column">
+                    <div>
+                    <h5 class ="text-center">Mid Result : {{key}}</h5>
+                </div>
+        
+                     <table class="table table-striped table-bordered table-sm" style="width:50%">
+                        <thead class="table-info">
+                            <tr >
+                                
+                                <th>Subject name</th>
+                                <th>Mid_1</th>
+                                <th>Quiz_1</th>
+                                <th>Assign_1</th>
+                                <th>Mid_2</th>
+                                <th>Quiz_2</th>
+                                <th>Assign_2</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for j in value %}
+                            <tr class="table-light ">
+                                
+                                 <td>{{j.SUBJECT.Subname}}</td>
+                                 <td>{{j.MID_1}}</td>
+                                 <td>{{j.quiz_1}}</td>
+                                 <td>{{j.assign_1}}</td>
+                                 <td>{{j.MID_2}}</td>
+                                 <td>{{j.quiz_2}}</td>
+                                 <td>{{j.assign_2}}</td>
+                                 <td>{{j.Total}}</td>
+                            </tr>
+                            
+                            {% endfor %}
+        
+                    </tbody>
+                    </table>
+               
+                   </div>
+                     
+                      {% endfor %}
+                          
+                    </div>
+
+
+                    <div class="row1">
+                        {% for key,value in mid2.items %}
+                         
+                        <div class="column">
+                            <div>
+                            <h5 class ="text-center">Mid Result : {{key}}</h5>
+                        </div>
+                
+                             <table class="table table-striped table-bordered table-sm" style="width:70%">
+                                <thead class="table-info">
+                                    <tr >
+                                        
+                                        <th>Subject name</th>
+                                        <th>Mid_1</th>
+                                        <th>Quiz_1</th>
+                                        <th>Assignment_1</th>
+                                        <th>Mid_2</th>
+                                        <th>Quiz_2</th>
+                                        <th>Assignment_2</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for j in value %}
+                                    <tr class="table-light ">
+                                        
+                                         <td>{{j.SUBJECT.Subname}}</td>
+                                         <td>{{j.MID_1}}</td>
+                                         <td>{{j.quiz_1}}</td>
+                                         <td>{{j.assign_1}}</td>
+                                         <td>{{j.MID_2}}</td>
+                                         <td>{{j.quiz_2}}</td>
+                                         <td>{{j.assign_2}}</td>
+                                         <td>{{j.Total}}</td>
+                                    </tr>
+                                    
+                                    {% endfor %}
+                
+                            </tbody>
+                            </table>
+                       
+                           </div>
+                             
+                              {% endfor %}
+                                  
+                           </div>
+
+
+            <div class="row1">
+                {% for key,value in mid3.items %}
+                 
+                <div class="column">
+                    <div>
+                    <h5 class ="text-center">Mid Result : {{key}}</h5>
+                </div>
+        
+                     <table class=" table table-striped table-bordered table-sm align-middle" style="width:70%">
+                        <thead class="thead-info">
+                            <tr >
+                                
+                                <th>Subject name</th>
+                                <th>Mid_1</th>
+                                <th>Quiz_1</th>
+                                <th>Assignment_1</th>
+                                <th>Mid_2</th>
+                                <th>Quiz_2</th>
+                                <th>Assignment_2</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for j in value %}
+                            <tr class="table-light ">
+                                
+                                 <td>{{j.SUBJECT.Subname}}</td>
+                                 <td>{{j.MID_1}}</td>
+                                 <td>{{j.quiz_1}}</td>
+                                 <td>{{j.assign_1}}</td>
+                                 <td>{{j.MID_2}}</td>
+                                 <td>{{j.quiz_2}}</td>
+                                 <td>{{j.assign_2}}</td>
+                                 <td>{{j.Total}}</td>
+                            </tr>
+                            
+                            {% endfor %}
+        
+                    </tbody>
+                    </table>
+               
+                   </div>
+                     
+                      {% endfor %}
+                          
+                    </div>
+                    <div class="row1">
+                        {% for key,value in mid4.items %}
+                         
+                        <div class="column">
+                            <div>
+                            <h5 class ="text-center">Mid Result : {{key}}</h5>
+                        </div>
+                
+                             <table class=" table table-striped table-bordered table-sm align-middle" style="width:70%">
+                                <thead class="thead-info">
+                                    <tr >
+                                        
+                                        <th>Subject name</th>
+                                        <th>Mid_1</th>
+                                        <th>Quiz_1</th>
+                                        <th>Assignment_1</th>
+                                        <th>Mid_2</th>
+                                        <th>Quiz_2</th>
+                                        <th>Assignment_2</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for j in value %}
+                                    <tr class="table-light ">
+                                        
+                                         <td>{{j.SUBJECT.Subname}}</td>
+                                         <td>{{j.MID_1}}</td>
+                                         <td>{{j.quiz_1}}</td>
+                                         <td>{{j.assign_1}}</td>
+                                         <td>{{j.MID_2}}</td>
+                                         <td>{{j.quiz_2}}</td>
+                                         <td>{{j.assign_2}}</td>
+                                         <td>{{j.Total}}</td>
+                                    </tr>
+                                    
+                                    {% endfor %}
+                
+                            </tbody>
+                            </table>
+                       
+                           </div>
+                             
+                              {% endfor %}
+                                  
+     </div>
+                </section>
+
+
+<section id="dashboard">
+  {% for stu in student %}
+  {% for col in stu %}
+  <div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Dashboard</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4" >
+                        <div class="card-body">Courses : {{col.Courses}}</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link Single" href="#Courses">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">Internships : {{col.Internships}}</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link  Single" href="#Internships">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body">Projects:{{col.Projects}}</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link  Single"  href="#Projects">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Extra Activities:{{col.Extracircular}}</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link Single"  href="#Extracircular">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <a class="small text-white stretched-link" id="showall"  target="4">View all</a>
+            </div>
+        
+        <section class="Courses">
+              
+              {% for i in Courses %}
+              <div class="column">
+                <div class="card3" >
+                  <div class="card-body4" >Course Details</div>
+                  </div>
+            
+              <table class=" table table-striped table-bordered table-sm align-middle" style="width:70%">
+                <thead class="thead-info">
+                  <tr>
+                    <th>Course Name</th>
+                    <th>Course Duration</th>
+                    <th>Certificate Issued By</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for j in i %}
+                  <tr>
+                     <td>{{j.Course_name}}</td>
+                     <td>{{j.Course_duration}}</td>
+                     <td>{{j.platform_name}}</td>
+                  </tr>
+                {% endfor %}
+                     </tbody>
+              </table>
+             </div>
+              {% endfor %}
+            </section>
+
+              <section id="Internships">
+              {% for i in Internships %}
+             
+                <div class="column">
+                    <div class="card3" >
+                      <div class="card-body5" >Internship Details</div>
+                      </div>
+                <table class=" table table-striped table-bordered table-sm align-middle" style="width:70%">
+                <thead class="thead-info">
+                  <tr>
+                    <th> Internship Role</th>
+                    <th>Company Name</th>
+                    <th>Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for j in i %}
+                  <tr>
+                     <td>{{j.Role}}</td>
+                     <td>{{j.Company_name}}</td>
+                     <td>{{j.Duration}}</td>
+                     
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+              </div>
+              {% endfor %}
+              </section>
+
+              <section id="Projects">
+
+              {% for i in Projects %}
+              <div class="column">
+                <div class="card3" >
+                  <div class="card-body6" >Project Details</div>
+                  </div>
+            
+                <table class=" table table-striped table-bordered table-sm align-middle" style="width:70% margin-left-100px">
+                <thead class="thead-info">
+                  <tr>
+                    <th>Project Nmae</th>
+                    <th>Project Domain</th>
+                    <th>Mentor Name</th>
+                  </tr>
+                </thead>
+                
+                <tbody> 
+                  {% for j in i %}
+                  <tr>
+                     <td>{{j.Project_name}}</td>
+                     <td>{{j.Project_Domain}}</td>
+                     <td>{{j.Mentor_name}}</td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+              
+              </table>
+             
+              </div>
+              {% endfor %}
+              
+            </section>
+
+
+            <section class="Extracircular">
+              {% for i in Extracircular %}
+              <div class="column">
+              <div class="card3" >
+                <div class="card-body7" >Extracircular Details</div>
+                </div>
+                <table class=" table table-striped table-bordered table-sm align-middle" style="width:70%">
+                <thead class="thead-info">
+                  <tr>
+                    <th>Activity Name</th>
+                    <th>Achievements</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for j in i %}
+                    <tr>
+                     <td>{{j.Domain}}</td>
+                     <td>{{j.Achievements}}</td>
+                    </tr>
+                     {% endfor %}
+              
+                </tbody>
+              </table>
+              </div>
+              {% endfor %}
+
+            </section>
+
+</section>
+
+
+<section id ="Analysis">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <div>
+
+        
+            <h3 class="text-center"> Result Analysis  of <b>{{col.roll_no}}</b></h3>
+           
+        
+         
+          <hr />
+          <div class="row">
+            <div class="col-md-6">
+              <canvas id="myChartline"></canvas>
+           
+        <script>
+              var ctx = document.getElementById("myChartline").getContext('2d');
+              var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+          
+                // The data for our dataset
+                data: {
+                  labels: [ {% for key, value in SGPA.items %} '{{key}}', {% endfor %}] ,
+                  datasets : [{
+                    label: 'Analysis of SGPA',
+                    backgroundColor: [
+                         
+                    'rgba(204, 107, 247, 0.5)',
+                          
+            
+                        ],
+                    borderColor: 'rgb(55, 99, 132)',
+                    data:  [ {% for key, value in SGPA.items %} '{{value}}', {% endfor %}] ,
+                  }]
+                },
+          
+                // Configuration options go here
+                options: {
+                  scales: {
+                    xAxes: [{
+                      display: true
+                    }],
+                    yAxes : [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+          
+              });
+           </script>
+           </div>
+        <div class="col-md-6">
+        <canvas id="myChartBar"></canvas>
+          <script>
+              var ctx = document.getElementById("myChartBar").getContext('2d');
+              var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: [ {% for key, value in SGPA.items %} '{{key}}', {% endfor %}] ,
+                  datasets: [{
+                    label: "SGPA Analysis",
+                    data: [ {% for key, value in SGPA.items %} '{{value}}', {% endfor %}],
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.3)',
+                      'rgba(54, 162, 235, 0.3)',
+                      'rgba(255, 206, 86, 0.3)',
+                      'rgba(75, 192, 192, 0.3)',
+                      'rgba(153, 102, 255, 0.3)',
+                      'rgba(255, 159, 64, 0.3)',
+                      'rgba(255, 83, 197, 0.3)',
+                      'rgba(204, 107, 247, 0.3)',
+        
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(204, 107, 247, 1)',
+                      
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+
+                options: {
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }],
+                    xAxes: [{
+                         
+                         barThickness: 50,
+                       
+                     }],
+                  }
+                }
+              });
+            
+          </script>
+         
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+         <canvas id="myDoublechart"></canvas>
+              <script>
+                  var ctx = document.getElementById("myDoublechart").getContext('2d');
+                  var myChart = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: {
+                      labels: [ {% for key, value in topscore.items %} '{{key}}', {% endfor %} '{{col.roll_no}}' ],
+                      datasets: [{
+                        label: "CGPA analysis",
+                        data: [ {% for key, value in topscore.items %} '{{value}}', {% endfor %} '{{col.CGPA}}' ],
+                        backgroundColor: [
+                          'rgba(255, 99, 132, 0.8)',
+                          'rgba(54, 162, 235, 0.8)',
+                          
+            
+                        ],
+                        borderColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          
+                        ],
+                        borderWidth: 1
+                      },
+                      ]
+                    },
+    
+                    options: {
+                      indexAxis: 'y',
+                      scales: {
+                        yAxes: [{
+                         
+                            barThickness: 40,
+                          
+                        }],
+                        xAxes: [{ticks: {
+                            beginAtZero: true,
+                            
+                       } }]
+                       
+                      }
+                    }
+                  });
+                
+              </script>
+        <div class="col-md-6">
+        <canvas id="SemChartline"></canvas>
+             
+          <script>
+                var ctx = document.getElementById("SemChartline").getContext('2d');
+                var chart = new Chart(ctx, {
+                  // The type of chart we want to create
+                  type: 'line',
+            
+                  // The data for our dataset
+                  data: {
+                    labels: [ {% for key, value in SGPA.items %} '{{key}}', {% endfor %}] ,
+                    datasets : [{
+                      label: 'Student SGPA',
+                      borderColor: 'rgba(255, 206, 86, 1)',
+                      
+                      data:  [ {% for key, value in SGPA.items %} '{{value}}', {% endfor %}] ,
+                    } ,
+                    {
+                      label: 'Highest SGPA',
+                      borderColor: 'rgba(75, 192, 192, 1)',
+                      data:  [ {% for key, value in semtop.items %} '{{value}}', {% endfor %}] ,
+                    }]
+                  },
+            
+                  // Configuration options go here
+                  options: {
+                    scales: {
+                      xAxes: [{
+                        ticks: {
+                          beginAtZero: true
+                        }                
+                        
+                      }],
+                      yAxes : [{
+                        display: true
+                        }
+                      }]
+                    }
+                  }
+            
+                });
+             </script>
+             </div>
+        </div>
+              {% endfor %}
+              {% endfor %}
+
+    </div>
+</section>
+</div>
+</div>
+{% endif %}
+{% endblock %}
+</body>
+</html>
+  
